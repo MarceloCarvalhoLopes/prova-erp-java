@@ -1,7 +1,11 @@
 package com.senior.provaerp.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +14,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -34,6 +39,18 @@ public class Produto {
 	@Enumerated(EnumType.STRING)
 	private TipoProduto tipo;
 
+	//o produto conhece os itens associados a ele
+	@OneToMany(mappedBy = "id.produto")
+	private Set<ItemPedido> itens = new HashSet<>();
+	
+	//O produto conhece os pedidos dele
+	public List<Pedido> getPedidos(){
+		List<Pedido> lista = new ArrayList<>();
+		for(ItemPedido x : itens) {
+			lista.add(x.getPedido());
+		}
+		return lista;
+	}
 	
 	public Long getId() {
 		return id;
@@ -82,6 +99,15 @@ public class Produto {
 	public void setTipo(TipoProduto tipo) {
 		this.tipo = tipo;
 	}
+	
+	public Set<ItemPedido> getItens() {
+		return itens;
+	}
+
+	public void setItens(Set<ItemPedido> itens) {
+		this.itens = itens;
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -99,7 +125,8 @@ public class Produto {
 		Produto other = (Produto) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
+
 	
 	
 	
