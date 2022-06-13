@@ -7,16 +7,18 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "item_pedido")
 public class ItemPedido implements Serializable  {
 	
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnore
 	@EmbeddedId
 	private ItemPedidoPK id = new ItemPedidoPK();
 	
-	private Double desconto;
 	private Integer quantidade;
 	private Double preco;
 	
@@ -24,12 +26,12 @@ public class ItemPedido implements Serializable  {
 		super();
 		id.setPedido(pedido);
 		id.setProduto(produto);
-		this.desconto = desconto;
 		this.quantidade = quantidade;
 		this.preco = preco;
 	}
 
 	//Para ter acesso o pedido e produto por fora da classe ItemPedido
+	@JsonIgnore
 	public Pedido getPedido() {
 		return id.getPedido();
 	}
@@ -44,14 +46,6 @@ public class ItemPedido implements Serializable  {
 
 	public void setId(ItemPedidoPK id) {
 		this.id = id;
-	}
-
-	public Double getDesconto() {
-		return desconto;
-	}
-
-	public void setDesconto(Double desconto) {
-		this.desconto = desconto;
 	}
 
 	public Integer getQuantidade() {
@@ -86,8 +80,6 @@ public class ItemPedido implements Serializable  {
 		ItemPedido other = (ItemPedido) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 	
 	
 }

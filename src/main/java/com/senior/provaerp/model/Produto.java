@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="Produto")
@@ -39,11 +41,15 @@ public class Produto {
 	@Enumerated(EnumType.STRING)
 	private TipoProduto tipo;
 
+	private Boolean situacao;
+	
 	//o produto conhece os itens associados a ele
+	@JsonIgnore
 	@OneToMany(mappedBy = "id.produto")
 	private Set<ItemPedido> itens = new HashSet<>();
 	
 	//O produto conhece os pedidos dele
+	@JsonIgnore
 	public List<Pedido> getPedidos(){
 		List<Pedido> lista = new ArrayList<>();
 		for(ItemPedido x : itens) {
@@ -100,6 +106,14 @@ public class Produto {
 		this.tipo = tipo;
 	}
 	
+	public Boolean getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(Boolean situacao) {
+		this.situacao = situacao;
+	}
+	
 	public Set<ItemPedido> getItens() {
 		return itens;
 	}
@@ -108,7 +122,6 @@ public class Produto {
 		this.itens = itens;
 	}
 	
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -126,8 +139,4 @@ public class Produto {
 		return Objects.equals(id, other.id);
 	}
 
-
-	
-	
-	
 }

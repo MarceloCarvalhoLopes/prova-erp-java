@@ -27,6 +27,8 @@ public class Pedido implements Serializable {
 	@Column(name="data_pedido")
 	private LocalDate dataPedido;
 
+	private Double desconto;
+	
 	private Boolean situacao;
 	
 	//Set para garantir que não vai ter item repetido no pedido 
@@ -49,6 +51,14 @@ public class Pedido implements Serializable {
 		this.dataPedido = dataPedido;
 	}
 
+	public Double getDesconto() {
+		return desconto;
+	}
+
+	public void setDesconto(Double desconto) {
+		this.desconto = desconto;
+	}
+	
 	public Boolean getSituacao() {
 		return situacao;
 	}
@@ -84,9 +94,4 @@ public class Pedido implements Serializable {
 	}
 
 
-
-	
-	
-	
-	
 }
