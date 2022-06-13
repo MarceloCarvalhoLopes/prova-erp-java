@@ -35,6 +35,18 @@ public class Pedido implements Serializable {
 	@OneToMany(mappedBy = "id.pedido")
 	private Set<ItemPedido> itens = new HashSet<>();
 	
+	public Pedido() {
+		
+	}
+	
+	public Pedido(Long id, LocalDate dataPedido, Double desconto, Boolean situacao) {
+		super();
+		this.id = id;
+		this.dataPedido = dataPedido;
+		this.desconto = desconto;
+		this.situacao = situacao;
+	}
+
 	public Long getId() {
 		return id;
 	}
