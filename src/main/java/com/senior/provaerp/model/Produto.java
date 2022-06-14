@@ -1,6 +1,5 @@
 package com.senior.provaerp.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,7 +32,7 @@ public class Produto {
 	private String nome;
 	
 	private String descricao;
-	private BigDecimal preco;
+	private Double preco;
 	
 	@Column(name="qtde_estoque")
 	private Long qtdeEstoque;
@@ -82,11 +81,11 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public BigDecimal getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(BigDecimal preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 
