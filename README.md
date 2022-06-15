@@ -18,5 +18,5 @@ Projeto localizado no GitHub no link - > https://github.com/MarceloCarvalhoLopes
 <h3> Para executar </h3> 
 
 <p>. Deve ser criado um database, no exemplo foi criado uma base local com nome -> <b>provaerp</b>, configurações localizadas no arquivo <b>application.properties</b> . </p>
-<p>. Em <b>src/main/resources/db/migration</b> estão os script com create e insert das entidades, que irão executar quando subir a aplicação. </p>
-<p>. Para execução dos testes foi utilizado Postman -> O aquivo <b>provaerp.postman_collection.json </b> está disponível para dowload e para importar  para realizar os testes. </p>
+<p>. Em <b>src/main/resources/db/migration</b> estão os scripts com create e insert das entidades, que irão executar quando subir a aplicação. </p>
+<p>. Para execução dos testes foi utilizado Postman -> O aquivos <b>provaerp.postman_collection.zip</b> e <b>Documentacão.zip</b> estão disponível para dowload para importar e realizar os testes. </p>
